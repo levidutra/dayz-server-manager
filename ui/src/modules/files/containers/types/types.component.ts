@@ -570,14 +570,16 @@ export class TypesComponent implements OnInit {
             this.coreXml = await xml.parseStringPromise(core);
             const ceEntries = this.coreXml.economycore.ce;
             const typesFiles: string[] = ['db/types.xml'];
-            for (const ceEntry of ceEntries) {
-                const folder = ceEntry.$.folder as string;
-                for (const file of ceEntry.file) {
-                    const fileName = file.$.name as string;
-                    const fileType = file.$.type as string;
-
-                    if (fileType === 'types') {
-                        typesFiles.push(`${folder}${folder.endsWith('/') ? '' : '/'}${fileName}`);
+            if (ceEntries && ceEntries.length > 0) {
+                for (const ceEntry of ceEntries) {
+                    const folder = ceEntry.$.folder as string;
+                    for (const file of ceEntry.file) {
+                        const fileName = file.$.name as string;
+                        const fileType = file.$.type as string;
+    
+                        if (fileType === 'types') {
+                            typesFiles.push(`${folder}${folder.endsWith('/') ? '' : '/'}${fileName}`);
+                        }
                     }
                 }
             }

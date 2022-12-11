@@ -1,17 +1,18 @@
 # DayZ Server Manager
 
 [![Pricing](https://img.shields.io/badge/Pricing-FREE-green.svg)](https://github.com/mr-guard/dayz-server-manager/)
-[![license](https://img.shields.io/github/license/mr-guard/dayz-server-manager.svg)](https://github.com/mr-guard/dayz-server-manager/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/levidutra/dayz-server-manager)](https://github.com/levidutra/dayz-server-manager/blob/master/LICENSE)
 ![GitHub Workflow Status](https://github.com/mr-guard/dayz-server-manager/actions/workflows/build.yml/badge.svg)  
 
-[![GitHub release](https://img.shields.io/github/release/mr-guard/dayz-server-manager.svg)](https://GitHub.com/mr-guard/dayz-server-manager/releases/)
-[![GitHub commits](https://img.shields.io/github/commits-since/mr-guard/dayz-server-manager/latest.svg)](https://GitHub.com/mr-guard/dayz-server-manager/commit/)
-[![Github all releases](https://img.shields.io/github/downloads/mr-guard/dayz-server-manager/total.svg)](https://GitHub.com/mr-guard/dayz-server-manager/releases/)  
+[![GitHub release](https://img.shields.io/github/release/levidutra/dayz-server-manager.svg)](https://GitHub.com/levidutra/dayz-server-manager/releases/)
+[![GitHub commits](https://img.shields.io/github/commits-since/levidutra/dayz-server-manager/latest.svg)](https://GitHub.com/levidutra/dayz-server-manager/commit/)
+[![Github all releases](https://img.shields.io/github/downloads/levidutra/dayz-server-manager/total.svg)](https://GitHub.com/levidutra/dayz-server-manager/releases/)  
 
 
 This tool aims to simplify the process of setting up a DayZ Standalone Server on a Windows Server.  
 The goal was to break down the initial effort to a minimum while providing configuration to nearly all aspects of the server administration process.
 
+> This is a slightly modified version of the original mr-guard dayz-server-manager with some bug fixes and improvements
 
 ## Content <hr>
 

@@ -16,8 +16,20 @@ export class ConfigFileHelper {
 
     private paths = new Paths();
 
+    private CONFIG_FILE_NAME: string[] = ['server-manager.toml', 'server-manager.json'];
+
     public getConfigFilePath(): string {
+        for (let i = 0; i < this.CONFIG_FILE_NAME.length; i++) {
+            const cfgFileName = this.CONFIG_FILE_NAME[i];
+            if (fs.existsSync(cfgFileName))
+                return path.join(this.paths.cwd(), cfgFileName);
+        }
+       
         return path.join(this.paths.cwd(), 'server-manager.json');
+    }
+
+    public isConfigToml(): boolean {
+        return fs.existsSync(path.join(this.paths.cwd(), 'server-manager.toml'))
     }
 
     private getConfigFileContent(cfgPath: string): string {
@@ -46,6 +58,7 @@ export class ConfigFileHelper {
                 new Config(),
                 parseConfigFileContent(fileContent),
             );
+
             const configErrors = validateConfig(parsed);
             if (configErrors?.length) {
                 this.logConfigErrors(configErrors);

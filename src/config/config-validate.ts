@@ -1,6 +1,8 @@
 import 'reflect-metadata';
 import * as cron from 'cron-parser';
+import * as TOML from '@ltd/j-toml';
 import { Config, EventTypeEnum } from './config';
+import { ConfigFileHelper } from './config-file-helper';
 
 export const parseConfigFileContent = (fileContent: string): any => {
 
@@ -13,7 +15,11 @@ export const parseConfigFileContent = (fileContent: string): any => {
             .replace(/(\/\*(.|\n)*?\*\/)/g, '');
 
         try {
-            return JSON.parse(stripped);
+            if (new ConfigFileHelper().isConfigToml()) {
+                return TOML.parse(stripped, { bigint: false });
+            } else {
+                return JSON.parse(stripped);
+            } 
         } catch (e) {
             throw new Error(`Parsing config failed: ${e.message}`);
         }

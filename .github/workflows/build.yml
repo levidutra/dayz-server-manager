@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '14.x'
-    - name: download mikeros tools
+    - name: Download Mikeros Tools
       uses: arma-actions/mikero-tools@latest
     - name: Install deps
       run: npm i
@@ -25,12 +25,18 @@ jobs:
       run: npm run buildAndPack
     - name: Zip Artifacts
       run: zip -r -j server-manager.zip build/*
-    - name: Archive build artifacts
+    - name: Archive Build Artifacts
       if: "!startsWith(github.ref, 'refs/tags/v')"
       uses: actions/upload-artifact@v3
       with:
         name: server-manager.zip
         path: ./server-manager.zip
+    - name: Create Changelog
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: Bullrich/generate-release-changelog@master
+      id: Changelog
+      env:
+        REPO: ${{ github.repository }}
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/v')
       id: create_release
@@ -40,6 +46,8 @@ jobs:
       with:
         tag: ${{ github.ref }}
         name: Release ${{ github.ref }}
+        body: |
+            ${{ steps.Changelog.outputs.changelog }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
